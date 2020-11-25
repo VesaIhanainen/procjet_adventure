@@ -17,9 +17,12 @@ public:
     ~CharacterCreator();
 public slots:
     void on_generateButton_clicked();
+    void on_continueButton_clicked();
     void setValue(Ability);
+    //void setName();
 signals:
     void valueChanged(Ability);
+    //void nameChanged();
 private:
     Ui::CharacterCreator *ui;
     Character player;    

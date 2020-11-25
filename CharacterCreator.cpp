@@ -2,6 +2,8 @@
 #include "./ui_CharacterCreator.h"
 #include <iostream>
 #include <stdlib.h>
+#include "DBHandler.h"
+
 CharacterCreator::CharacterCreator(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CharacterCreator)
@@ -22,18 +24,24 @@ void CharacterCreator::on_generateButton_clicked()
 {
     player.Str = int(rand()% 13 + 5);
     emit valueChanged(Ability::Str);
-    player.Dex = int(rand()% 13 + 5);;
+    player.Dex = int(rand()% 13 + 5);
     emit valueChanged(Ability::Dex);
-    player.Con = int(rand()% 13 + 5);;
+    player.Con = int(rand()% 13 + 5);
     emit valueChanged(Ability::Con);
-    player.Wis = int(rand()% 13 + 5);;
+    player.Wis = int(rand()% 13 + 5);
     emit valueChanged(Ability::Wis);
-    player.Int = int(rand()% 13 + 5);;
+    player.Int = int(rand()% 13 + 5);
     emit valueChanged(Ability::Int);
-    player.Cha = int(rand()% 13 + 5);;
+    player.Cha = int(rand()% 13 + 5);
     emit valueChanged(Ability::Cha);
 }
+void CharacterCreator::on_continueButton_clicked()
+{
+    player.Name.assign(ui->chaNameBox->toPlainText().toUtf8().constData());
+    DBHandler db{player.Name.c_str()};
+    db.create_character(player);
 
+}
 void CharacterCreator::setValue(Ability changedAbility)
 {
     switch(changedAbility){

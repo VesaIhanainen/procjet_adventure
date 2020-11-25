@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 struct Character{
@@ -7,5 +9,6 @@ struct Character{
     int Wis;
     int Int;
     int Cha;
-    std::string name;
+    std::string Name;
 };
+

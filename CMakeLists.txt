@@ -25,25 +25,28 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(SQLite3)
 
-if(ANDROID)
-  add_library(procjet_adventure SHARED
+#if(ANDROID)
+#  add_library(procjet_adventure SHARED
+#    main.cpp
+#    CharacterCreator.cpp
+#    CharacterCreator.h
+#    CharacterCreator.ui
+#    character.cpp
+#    character.hpp
+#  )
+#else()
+add_executable(procjet_adventure
     main.cpp
     CharacterCreator.cpp
     CharacterCreator.h
     CharacterCreator.ui
     character.cpp
     character.hpp
-  )
-else()
-  add_executable(procjet_adventure
-    main.cpp
-    CharacterCreator.cpp
-    CharacterCreator.h
-    CharacterCreator.ui
-    character.cpp
-    character.hpp
-  )
-endif()
-
-target_link_libraries(procjet_adventure PRIVATE Qt5::Widgets)
+    DBHandler.cpp
+    DBHandler.h
+)
+#endif()
+include_directories(${SQLite3_INCLUDE_DIRS})
+target_link_libraries(procjet_adventure PRIVATE Qt5::Widgets ${SQLite3_LIBRARIES})

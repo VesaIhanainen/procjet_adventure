@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(project_adventure LANGUAGES CXX)
+project(procjet_adventure LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -27,23 +27,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 if(ANDROID)
-  add_library(project_adventure SHARED
+  add_library(procjet_adventure SHARED
     main.cpp
-    procjetadventure.cpp
-    procjetadventure.h
-    procjetadventure.ui
+    CharacterCreator.cpp
+    CharacterCreator.h
+    CharacterCreator.ui
     character.cpp
     character.hpp
   )
 else()
-  add_executable(project_adventure
+  add_executable(procjet_adventure
     main.cpp
-    procjetadventure.cpp
-    procjetadventure.h
-    procjetadventure.ui
+    CharacterCreator.cpp
+    CharacterCreator.h
+    CharacterCreator.ui
     character.cpp
     character.hpp
   )
 endif()
 
-target_link_libraries(project_adventure PRIVATE Qt5::Widgets)
+target_link_libraries(procjet_adventure PRIVATE Qt5::Widgets)

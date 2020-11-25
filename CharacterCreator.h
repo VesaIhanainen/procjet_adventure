@@ -5,23 +5,23 @@
 #include "character.hpp"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class ProcjetAdventure; }
+namespace Ui { class CharacterCreator; }
 QT_END_NAMESPACE
 enum Ability {Str=0, Dex, Con, Wis, Int, Cha};
-class ProcjetAdventure : public QMainWindow
+class CharacterCreator : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    ProcjetAdventure(QWidget *parent = nullptr);
-    ~ProcjetAdventure();
+    CharacterCreator(QWidget *parent = nullptr);
+    ~CharacterCreator();
 public slots:
     void on_generateButton_clicked();
     void setValue(Ability);
 signals:
     void valueChanged(Ability);
 private:
-    Ui::ProcjetAdventure *ui;
+    Ui::CharacterCreator *ui;
     Character player;    
 };
 #endif // PROCJETADVENTURE_H

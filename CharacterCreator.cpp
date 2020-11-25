@@ -1,40 +1,40 @@
-#include "procjetadventure.h"
-#include "./ui_procjetadventure.h"
+#include "CharacterCreator.h"
+#include "./ui_CharacterCreator.h"
 #include <iostream>
 #include <stdlib.h>
-ProcjetAdventure::ProcjetAdventure(QWidget *parent)
+CharacterCreator::CharacterCreator(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::ProcjetAdventure)
+    , ui(new Ui::CharacterCreator)
 {
     ui->setupUi(this);
     connect(ui->generateButton, SIGNAL(clicked()), this, SLOT(on_generateButton_clicked()));
-    connect(this, &ProcjetAdventure::valueChanged, this, &ProcjetAdventure::setValue);
+    connect(this, &CharacterCreator::valueChanged, this, &CharacterCreator::setValue);
 
 }
 
-ProcjetAdventure::~ProcjetAdventure()
+CharacterCreator::~CharacterCreator()
 {
     delete ui;
 }
 
 
-void ProcjetAdventure::on_generateButton_clicked()
+void CharacterCreator::on_generateButton_clicked()
 {
-    player.Str = int(rand()% 18 + 5);
+    player.Str = int(rand()% 13 + 5);
     emit valueChanged(Ability::Str);
-    player.Dex = int(rand()% 18 + 5);;
+    player.Dex = int(rand()% 13 + 5);;
     emit valueChanged(Ability::Dex);
-    player.Con = int(rand()% 18 + 5);;
+    player.Con = int(rand()% 13 + 5);;
     emit valueChanged(Ability::Con);
-    player.Wis = int(rand()% 18 + 5);;
+    player.Wis = int(rand()% 13 + 5);;
     emit valueChanged(Ability::Wis);
-    player.Int = int(rand()% 18 + 5);;
+    player.Int = int(rand()% 13 + 5);;
     emit valueChanged(Ability::Int);
-    player.Cha = int(rand()% 18 + 5);;
+    player.Cha = int(rand()% 13 + 5);;
     emit valueChanged(Ability::Cha);
 }
 
-void ProcjetAdventure::setValue(Ability changedAbility)
+void CharacterCreator::setValue(Ability changedAbility)
 {
     switch(changedAbility){
         case Ability::Str : ui->strScore->setNum(player.Str);

@@ -1,3 +1,5 @@
+#include <string>
+
 struct Character{
     int Str;
     int Dex;
@@ -5,4 +7,5 @@ struct Character{
     int Wis;
     int Int;
     int Cha;
+    std::string name;
 };
